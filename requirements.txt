@@ -1,0 +1,10 @@
+# Install once on the shared Linux VM:  pip install -r requirements.txt
+scikit-learn
+pandas
+numpy
+matplotlib
+scapy
+dpkt
+pyarrow
+PyYAML
+pytest

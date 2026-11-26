@@ -1,0 +1,9 @@
+# datasets and bulk artifacts - never commit
+shared/data/*
+!shared/data/.gitkeep
+*.parquet
+*.pcap
+*.zip
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
