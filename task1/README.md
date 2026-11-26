@@ -1,7 +1,5 @@
 # Task 1 — Dataset Pipeline & Quantization-Aware Tree Training
 
-**Owner:** 1 person · **Dependency:** none — start immediately.
-
 Full spec: `ACN_Task_Distribution.pdf`, section 4. This README is your starter checklist.
 
 ## Goal
@@ -38,15 +36,6 @@ Put raw datasets in `shared/data/` (CIC-IDS2017 from unbw.ca/cicdatasets, or UNS
    Every run → one row appended to `shared/interfaces/results.csv`.
 7. **Accuracy oracle** (`task1/src/oracle.py`):
    `evaluate(bit_config) -> accuracy` — clean, documented, importable from task4/.
-
-## Layout
-```
-task1/
-  src/          your scripts (extract, label, quantizer, oracle, train)
-  tests/        pytest
-  notebooks/    exploratory work
-  output/       Parquet datasets, model.json exports, plots
-```
 
 ## Deliverables
 - extractor + labelling scripts; cleaned per-packet datasets (Parquet)

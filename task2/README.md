@@ -1,7 +1,5 @@
 # Task 2 — P4 Switch Data Plane & Control Path
 
-**Owner:** 2 people · **Dependency:** low — the agreed file formats are enough to start.
-
 Full spec: `ACN_Task_Distribution.pdf`, section 5. This README is your starter checklist.
 
 ## Goal
@@ -54,7 +52,7 @@ pip install scapy p4runtime pygrpc
 8. **Stateful flow features (stretch).** 5-tuple-hash register arrays: packet
    count + last-seen timestamp → inter-arrival-time feature. Document collision rate.
 
-## Layout
+## possible Layout
 ```
 task2/
   p4/          P4_16 source
