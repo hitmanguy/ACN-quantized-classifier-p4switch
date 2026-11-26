@@ -27,3 +27,11 @@ a frozen file.
 - Ternary `match` entries use `value` + `mask` pairs per key bit-field; Task 3 documents
   the exact spelling in `task3/README.md` and Task 2's loader must accept it.
 
+**Threshold convention (model.json, frozen in v1):** thresholds are integers in the
+*quantized* b-bit space of the feature. A node goes **left if `value < threshold`**,
+otherwise right. (This differs from scikit-learn's `<=`; the exporter converts.)
+Prefix-aligned trees use thresholds that are multiples of 2^k.
+
+**features.yaml keys:** `width` = original bits, `default` = value used when the
+header field is absent, `sweep: false` = feature is never reduced below `width`.
+

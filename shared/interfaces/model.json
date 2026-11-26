@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "dataset": "stub",
+  "depth": 2,
+  "threshold_rule": "left if value < threshold (quantized integer space)",
+  "bit_config": {"pkt_len": 8, "dport": 8},
+  "tree": {
+    "feature": "pkt_len", "threshold": 16,
+    "left":  {"feature": "dport", "threshold": 4,
+              "left": {"class": "benign"}, "right": {"class": "dos"}},
+    "right": {"class": "benign"}
+  }
+}

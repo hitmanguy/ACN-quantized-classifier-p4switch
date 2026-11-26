@@ -47,9 +47,13 @@ Put raw datasets in `shared/data/` (CIC-IDS2017 from unbw.ca/cicdatasets, or UNS
 Baseline macro-F1 on both datasets, accuracy-vs-bits curve complete, and Task 4 can call
 `oracle.evaluate(bit_config)` without messaging you.
 
-## Run
-```bash
-python task1/src/extract.py --dataset shared/data/<name>.zip   # example, name your own
-pytest task1/tests
-```
-Update this README with your actual entry points as you build them.
+## Conventions (see shared/README.md for the frozen versions)
+- Thresholds in model.json are quantized integers; left if `value < threshold`.
+- Packet length = `ipv4.totalLen` (tshark `ip.len`), not frame length.
+- `tcp_flags` is fixed at 8 bits (`sweep: false` in features.yaml).
+
+## Entry points
+- `task1/src/quantizer.py`  — `truncate`, `clip_scale`
+- `task1/src/oracle.py`     — `evaluate(bit_config)` (stub for now)
+- `pytest task1/tests`
+(Add `extract.py`, `label.py`, `tree.py`, `experiments.py` here as they get built.)

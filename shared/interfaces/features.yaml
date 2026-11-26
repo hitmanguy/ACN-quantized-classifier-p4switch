@@ -1,0 +1,14 @@
+version: 1
+# Feature definitions. Tasks 2 and 3 read this file; bump `version` on any change.
+# Missing-field defaults: ICMP has no ports/flags/window, UDP has no flags/window.
+features:
+  pkt_len:   {field: ipv4.totalLen, tshark: ip.len,      width: 16, default: 0, sweep: true}
+  proto:     {field: ipv4.protocol, tshark: ip.proto,    width: 8,  default: 0, sweep: true}
+  sport:     {field: l4.srcPort,    tshark: "tcp.srcport / udp.srcport", width: 16, default: 0, sweep: true}
+  dport:     {field: l4.dstPort,    tshark: "tcp.dstport / udp.dstport", width: 16, default: 0, sweep: true}
+  tcp_flags: {field: tcp.flags,     tshark: "tcp.flags & 0xFF", width: 8, default: 0, sweep: false}  # fixed at 8 bits: top nibble (CWR/ECE/URG/ACK) is not the informative half; ablation (8 bits vs dropped) is reported separately
+  ttl:       {field: ipv4.ttl,      tshark: ip.ttl,      width: 8,  default: 0, sweep: true}
+  tcp_win:   {field: tcp.window,    tshark: tcp.window_size_value, width: 16, default: 0, sweep: true}
+experiment_bits: [16, 8, 6, 4]   # applies only to features with sweep: true
+quant_method:                    # fill in after the truncate vs clip_scale check
+  pkt_len: clip_scale            # tentative: clip to [0, 1500]
